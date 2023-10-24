@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+</head>
+<body>
+    <!-- Formulario  -->
+    <form action="/crear" method="post">
+        <div>
+            <label for="titulo">Titulo</label>
+            <input type="text" id="titulo" name="titulo">
+        </div>
+        <div>
+            <label for="nota">Nota</label>
+            <input type="text" id="nota" name="nota">
+        </div>
+        <input type="submit" value="Cargar">
+    </form>
+    <!-- Renderizar la lista de notas  -->
+    <div>
+        {% for i in notas_guardadas %}
+        <div>
+            <h3>{{i.titulo}}</h3>
+            <p>{{i.nota}}</p>
+            <div>
+                <a href="{{ url_for('notas.actualizar', id=i.id) }}">Editar</a>
+                <a href="{{ url_for('notas.eliminar', id=i.id) }}">Eliminar</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
